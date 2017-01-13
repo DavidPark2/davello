@@ -1,7 +1,7 @@
 import React from 'react'
 import { Button, Col, Grid, Row, ButtonGroup } from 'react-bootstrap';
 
-// const Card = ({list, addCard, activateModal}) => (
+// const Card = ({list, addCard, activateModal, editModal}) => (
 // 	<div>
 // 		<Grid>
 //       <Row>
@@ -19,9 +19,10 @@ import { Button, Col, Grid, Row, ButtonGroup } from 'react-bootstrap';
 // 	</div>
 // )
 
-const Card = ({children, ...props}) => (
-  <div {...props}>
-    {children}
+// 2
+const Card = ({card, activateModal}) => (
+  <div>
+    <Button onClick={activateModal} bsSize="large" block>{card}</Button>
   </div>
 )
 

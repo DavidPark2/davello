@@ -4,6 +4,7 @@ import Card from './Card'
 import CardModal from './CardModal'
 import '../stylesheets/css/Cards.css'
 
+// 1
 // const Cards = ({list, addCard, activateModal, editModal}) => (
 //   <div>
 //     <Card 
@@ -17,16 +18,21 @@ import '../stylesheets/css/Cards.css'
 //   </div>
 // )
 
+// 2
 const Cards = ({list, addCard, activateModal, editModal}) => (
   <div>
     <Grid>
       <Row>
         <Col sm={3}>
-          <ul>{list.map(({id, card}) =>
+          <ul>{list.map(({id, card, text}) =>
             <li className="cardList" key={id}>
-              <Card>
-                <Button bsSize="large" block>{card}</Button>
-              </Card>
+              <Card 
+                card={card}
+                activateModal={activateModal.bind(null, id)}
+              />
+              <CardModal
+                editModal={editModal.bind(null, id)}
+              />
             </li>
           )}
           <Button onClick={addCard} bsStyle="danger">add card</Button>
@@ -36,5 +42,6 @@ const Cards = ({list, addCard, activateModal, editModal}) => (
     </Grid>
   </div>
 )
+
 
 export default Cards

@@ -64,7 +64,13 @@ class App extends Component {
 
   _editModal = (id, text, card) => {
     this.setState({
-
+      list: this.state.list.map(note => {
+        if(note.id === id) {
+          note.modal = false
+          note.card = card
+          note.text = text
+        }
+      })
     })
   }
 }
