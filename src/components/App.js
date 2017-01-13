@@ -15,11 +15,15 @@ class App extends Component {
       list: [
         {
           id: uuid.v4(),
-          card: 'sup'
+          card: 'sup',
+          modal: false,
+          text: 'Sup man'
         },
         {
           id: uuid.v4(),
-          card: 'hey'
+          card: 'hey',
+          modal: false,
+          text: 'hey hey hey man'
         }
       ]
     }
@@ -31,12 +35,38 @@ class App extends Component {
         <Navbarz />
         <Cards
           list={this.state.list}
+          addCard={this._addCards}
+          activateModal={this._activateModal}
+          editModal={this._editModal}
         />
       </div>
     );
   }
 
+  _addCards = () => {
+    this.setState({
+      list: this.state.list.concat([{
+        id: uuid.v4(),
+        card: 'New Card'
+      }])
+    })
+  }
 
+  _activateModal = (id) => {
+    this.setState({
+      list: this.state.list.map(note => {
+        if(note.id === id) {
+          note.modal = true
+        }
+      })
+    })
+  }
+
+  _editModal = (id, text, card) => {
+    this.setState({
+
+    })
+  }
 }
 
 export default App;

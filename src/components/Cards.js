@@ -1,23 +1,21 @@
 import React from 'react'
-import { Button, Col, Grid, Row } from 'react-bootstrap';
-import '../stylesheets/css/Cards.css'
+import { Button, Col, Grid, Row, Modal } from 'react-bootstrap'
+import Card from './Card'
+import CardModal from './CardModal'
 
-const Cards = ({list}) => (
+const Cards = ({list, addCard, activateModal, editModal}) => (
   <div>
-    <Grid>
-      <ul>{list.map(({id, card}) =>
-        <Row>
-          <Col sm={6} md={3}>
-            <li key={id} className="cardList">
-              {card}
-            </li>
-          </Col>
-        </Row>
-      )}
-      </ul>
-      <Button bsStyle="danger">add card</Button>
-    </Grid>
+    <Card 
+      list={list}
+      addCard={addCard}
+      activateModal={activateModal.bind(null, list.id)}
+    />
+    <CardModal
+      list={list}
+    />
   </div>
 )
+
+
 
 export default Cards
