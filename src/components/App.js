@@ -37,6 +37,7 @@ class App extends Component {
           list={this.state.list}
           addCard={this._addCards}
           activateModal={this._activateModal}
+          closeModal={this._closeModal}
           editModal={this._editModal}
         />
       </div>
@@ -58,6 +59,20 @@ class App extends Component {
         if(note.id === id) {
           note.modal = true
         }
+
+        return note
+      })
+    })
+  }
+
+  _closeModal = (id) => {
+    this.setState({
+      list: this.state.list.map(note => {
+        if(note.id === id) {
+          note.modal = false
+        }
+
+        return note
       })
     })
   }
@@ -73,6 +88,8 @@ class App extends Component {
       })
     })
   }
+
+
 }
 
 export default App;

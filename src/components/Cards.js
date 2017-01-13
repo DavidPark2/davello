@@ -19,19 +19,20 @@ import '../stylesheets/css/Cards.css'
 // )
 
 // 2
-const Cards = ({list, addCard, activateModal, editModal}) => (
+const Cards = ({list, addCard, activateModal, editModal, closeModal}) => (
   <div>
     <Grid>
       <Row>
         <Col sm={3}>
-          <ul>{list.map(({id, card, text}) =>
+          <ul>{list.map(({id, card, text, modal}) =>
             <li className="cardList" key={id}>
               <Card 
                 card={card}
                 activateModal={activateModal.bind(null, id)}
               />
               <CardModal
-                editModal={editModal.bind(null, id)}
+                modal={modal}
+                closeModal={closeModal.bind(null, id)}
               />
             </li>
           )}

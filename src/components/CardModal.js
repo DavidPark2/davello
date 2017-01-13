@@ -1,9 +1,9 @@
 import React from 'react'
 import { Button, Modal, OverlayTrigger } from 'react-bootstrap';
 
-const CardModal = ({editModal}) => (
+const CardModal = ({modal, closeModal}) => (
   <div className="static-modal">
-	  <Modal show={editModal}>
+	  <Modal show={modal}>
 	      <Modal.Header>
 	        <Modal.Title>Modal title</Modal.Title>
 	      </Modal.Header>
@@ -13,7 +13,7 @@ const CardModal = ({editModal}) => (
 	      </Modal.Body>
 
 	      <Modal.Footer>
-	        <Button>Close</Button>
+	        <Button onClick={closeModal}>close</Button>
 	        <Button bsStyle="primary">Save changes</Button>
 	      </Modal.Footer>
     </Modal>
@@ -21,7 +21,3 @@ const CardModal = ({editModal}) => (
 );
 
 export default CardModal
-
-	    // <Modal.Footer>
-	    //   <Button onClick={this.close}>Close</Button>
-	    // </Modal.Footer>
