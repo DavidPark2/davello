@@ -1,15 +1,15 @@
 import React from 'react'
-import { Button, Col, Grid, Row, Modal } from 'react-bootstrap'
+import { Button, Col, Grid, Row } from 'react-bootstrap'
 import Card from './Card'
 import CardModal from './CardModal'
 import '../stylesheets/css/Cards.css'
 
-const Cards = ({list, addCard, activateModal, editModal, closeModal, 
-titleChanging, textChanging}) => (
+const Cards = ({list, addCard, activateModal, editModalTitle, closeModal, 
+titleChanging, textChanging, editModalText}) => (
   <div>
     <Grid>
       <Row>
-        <Col sm={3}>
+        <Col xs={4}>
           <ul>{list.map(({id, title, text, modal}) =>
             <li className="cardList" key={id}>
               <Card 
@@ -23,9 +23,10 @@ titleChanging, textChanging}) => (
                 textChange={text.change}
                 title={title.name}
                 titleChange={title.change}
-                editModal={editModal.bind(null, id)}
+                editModalTitle={editModalTitle.bind(null, id)}
                 titleChanging={titleChanging.bind(null, id)}
                 textChanging={textChanging.bind(null, id)}
+                editModalText={editModalText.bind(null, id)}
               />
             </li>
           )}

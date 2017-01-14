@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import logo from '../logo.svg';
 import '../stylesheets/css/App.css';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import uuid from 'uuid'
@@ -16,24 +15,24 @@ class App extends Component {
         {
           id: uuid.v4(),
           title: {
-            name: 'sup',
+            name: 'Click me to Edit!',
             change: false
           },
           modal: false,
           text: {
-            name: 'Sup man',
+            name: 'Click me to Edit ALSO!',
             change: false
           }
         },
         {
           id: uuid.v4(),
           title: {
-            name: 'hey',
+            name: 'Click me to Edit!',
             change: false
           },
           modal: false,
           text: {
-            name: 'hey hey hey man',
+            name: 'Click me to Edit ALSO!',
             change: false
           }
         }
@@ -50,9 +49,10 @@ class App extends Component {
           addCard={this._addCards}
           activateModal={this._activateModal}
           closeModal={this._closeModal}
-          editModal={this._editModal}
+          editModalTitle={this._editModalTitle}
           titleChanging={this._titleChange}
           textChanging={this._textChange}
+          editModalText={this._editModalText}
         />
       </div>
     );
@@ -72,6 +72,12 @@ class App extends Component {
           change: false
         }
       }])
+    })
+  }
+
+  _makeNewList = () => {
+    this.setState({
+
     })
   }
 
@@ -123,13 +129,12 @@ class App extends Component {
     })
   }
 
-  _editModal = (id, text, title) => {
+  _editModalTitle = (id, title) => {
     this.setState({
       list: this.state.list.map(note => {
         if(note.id === id) {
-          note.modal = false
-          note.text = text
-          note.title = title
+          note.title.change = false
+          note.title.name = title
         }
 
         return note
@@ -137,7 +142,18 @@ class App extends Component {
     })
   }
 
+  _editModalText = (id, text) => {
+    this.setState({
+      list: this.state.list.map(note => {
+        if(note.id === id) {
+          note.text.change = false
+          note.text.name = text
+        }
 
+        return note
+      })
+    })
+  }
 }
 
 export default App;

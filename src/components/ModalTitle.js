@@ -1,10 +1,17 @@
 import React from 'react'
-import { Button, Modal, OverlayTrigger } from 'react-bootstrap';
+import ModalTitleEdit from './ModalTitleEdit'
 
-const ModalTitle = ({titleChange, title}) => (
-	<div>
-		<h1>{title}</h1>
-	</div>
-)
+const ModalTitle = ({titleChange, title, editModalTitle}) => {
+	if(titleChange) {
+		return <ModalTitleEdit 
+			editModalTitle={editModalTitle}
+			title={title}
+		/>
+	}
+
+	return <span>{title}</span>
+}
+
+
 
 export default ModalTitle
