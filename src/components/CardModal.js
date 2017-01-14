@@ -1,34 +1,23 @@
 import React from 'react'
 import { Button, Modal, OverlayTrigger } from 'react-bootstrap';
+import ModalDefault from './ModalDefault'
 
-const CardModal = ({modal, closeModal, text, title, editModal}) => (
-  <div className="static-modal">
-	  <Modal show={modal}>
-	      <Modal.Header>
-	        <Modal.Title>{title}</Modal.Title>
-	      </Modal.Header>
+const CardModal = ({modal, closeModal, text, 
+title, editModal, textChange, titleChange}) => {
+	switch(true) {
+		case textChange:
 
-	      <Modal.Body>
-	        {text}
-	      </Modal.Body>
+		case titleChange:
 
-	      <Modal.Footer>
-	        <Button onClick={closeModal}>close</Button>
-	        <Button bsStyle="primary">Save changes</Button>
-	      </Modal.Footer>
-    </Modal>
-  </div>
-);
-
-// const CardModal = ({{modal, closeModal, text, card, editModal}}) => {
-// 	if(modal) {
-// 		return <Edit 
-			
-// 		/>
-// 	}
-
-// 	return
-// }
+		default:
+			return <ModalDefault
+				modal={modal}
+				text={text}
+				closeModal={closeModal}
+				title={title}
+			/>
+	}
+}
 
 
 

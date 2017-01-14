@@ -12,21 +12,6 @@ class App extends Component {
     super(props)
 
     this.state = {
-      // list: [
-      //   {
-      //     id: uuid.v4(),
-      //     title: 'sup',
-      //     modal: false,
-      //     text: 'Sup man'
-      //   },
-      //   {
-      //     id: uuid.v4(),
-      //     title: 'hey',
-      //     modal: false,
-      //     text: 'hey hey hey man'
-      //   }
-      // ]
-
       list: [
         {
           id: uuid.v4(),

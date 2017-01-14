@@ -19,7 +19,9 @@ const Cards = ({list, addCard, activateModal, editModal, closeModal}) => (
                 modal={modal}
                 closeModal={closeModal.bind(null, id)}
                 text={text.name}
+                textChange={text.change}
                 title={title.name}
+                titleChange={title.change}
                 editModal={editModal.bind(null, id)}
               />
             </li>
