@@ -12,18 +12,45 @@ class App extends Component {
     super(props)
 
     this.state = {
+      // list: [
+      //   {
+      //     id: uuid.v4(),
+      //     title: 'sup',
+      //     modal: false,
+      //     text: 'Sup man'
+      //   },
+      //   {
+      //     id: uuid.v4(),
+      //     title: 'hey',
+      //     modal: false,
+      //     text: 'hey hey hey man'
+      //   }
+      // ]
+
       list: [
         {
           id: uuid.v4(),
-          card: 'sup',
+          title: {
+            name: 'sup',
+            change: false
+          },
           modal: false,
-          text: 'Sup man'
+          text: {
+            name: 'Sup man',
+            change: false
+          }
         },
         {
           id: uuid.v4(),
-          card: 'hey',
+          title: {
+            name: 'hey',
+            change: false
+          },
           modal: false,
-          text: 'hey hey hey man'
+          text: {
+            name: 'Sup man',
+            change: false
+          }
         }
       ]
     }
@@ -47,8 +74,16 @@ class App extends Component {
   _addCards = () => {
     this.setState({
       list: this.state.list.concat([{
-        id: uuid.v4(),
-        card: 'New Card'
+      id: uuid.v4(),
+        title: {
+          name: 'new card',
+          change: false
+        },
+        modal: false,
+        text: {
+          name: 'new card',
+          change: false
+        }
       }])
     })
   }
@@ -77,14 +112,16 @@ class App extends Component {
     })
   }
 
-  _editModal = (id, text, card) => {
+  _editModal = (id, text, title) => {
     this.setState({
       list: this.state.list.map(note => {
         if(note.id === id) {
           note.modal = false
-          note.card = card
           note.text = text
+          note.title = title
         }
+
+        return note
       })
     })
   }

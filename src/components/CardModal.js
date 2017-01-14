@@ -1,15 +1,15 @@
 import React from 'react'
 import { Button, Modal, OverlayTrigger } from 'react-bootstrap';
 
-const CardModal = ({modal, closeModal}) => (
+const CardModal = ({modal, closeModal, text, title, editModal}) => (
   <div className="static-modal">
 	  <Modal show={modal}>
 	      <Modal.Header>
-	        <Modal.Title>Modal title</Modal.Title>
+	        <Modal.Title>{title}</Modal.Title>
 	      </Modal.Header>
 
 	      <Modal.Body>
-	        One fine body...
+	        {text}
 	      </Modal.Body>
 
 	      <Modal.Footer>
@@ -19,5 +19,17 @@ const CardModal = ({modal, closeModal}) => (
     </Modal>
   </div>
 );
+
+// const CardModal = ({{modal, closeModal, text, card, editModal}}) => {
+// 	if(modal) {
+// 		return <Edit 
+			
+// 		/>
+// 	}
+
+// 	return
+// }
+
+
 
 export default CardModal
