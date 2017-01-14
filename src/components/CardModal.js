@@ -1,24 +1,51 @@
 import React from 'react'
 import { Button, Modal, OverlayTrigger } from 'react-bootstrap';
-import ModalDefault from './ModalDefault'
+import ModalTitle from './ModalTitle'
+import ModalText from './ModalText'
 
-const CardModal = ({modal, closeModal, text, 
-title, editModal, textChange, titleChange}) => {
-	switch(true) {
-		case textChange:
+const CardModal = ({modal, closeModal, text, title, editModal, 
+textChange, titleChange, titleChanging, textChanging}) => (
+	<div>
+		<Modal show={modal}>
+	    <Modal.Header>
+	      <Modal.Title onClick={titleChanging}>
+					<ModalTitle 
+						titleChange={titleChange}
+						title={title}
+					/>
+	      </Modal.Title>
+	    </Modal.Header>
 
-		case titleChange:
+	    <Modal.Body onClick={textChanging}>
+	      <ModalText 
+					textChange={textChange}
+					text={text}
+	      />
+	    </Modal.Body>
 
-		default:
-			return <ModalDefault
-				modal={modal}
-				text={text}
-				closeModal={closeModal}
-				title={title}
-			/>
-	}
-}
+	    <Modal.Footer>
+	      <Button onClick={closeModal}>close</Button>
+	      <Button bsStyle="primary">Save changes</Button>
+	    </Modal.Footer>
+    </Modal>
+	</div>
+)
 
+// const CardModal = ({modal, closeModal, text, 
+// title, editModal, textChange, titleChange}) => {
+// 	switch(true) {
+// 		case textChange:
 
+// 		case titleChange:
+
+// 		default:
+// 			return <ModalDefault
+// 				modal={modal}
+// 				text={text}
+// 				closeModal={closeModal}
+// 				title={title}
+// 			/>
+// 	}
+// }
 
 export default CardModal

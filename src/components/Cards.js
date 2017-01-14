@@ -4,7 +4,8 @@ import Card from './Card'
 import CardModal from './CardModal'
 import '../stylesheets/css/Cards.css'
 
-const Cards = ({list, addCard, activateModal, editModal, closeModal}) => (
+const Cards = ({list, addCard, activateModal, editModal, closeModal, 
+titleChanging, textChanging}) => (
   <div>
     <Grid>
       <Row>
@@ -23,6 +24,8 @@ const Cards = ({list, addCard, activateModal, editModal, closeModal}) => (
                 title={title.name}
                 titleChange={title.change}
                 editModal={editModal.bind(null, id)}
+                titleChanging={titleChanging.bind(null, id)}
+                textChanging={textChanging.bind(null, id)}
               />
             </li>
           )}

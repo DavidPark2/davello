@@ -33,7 +33,7 @@ class App extends Component {
           },
           modal: false,
           text: {
-            name: 'Sup man',
+            name: 'hey hey hey man',
             change: false
           }
         }
@@ -51,6 +51,8 @@ class App extends Component {
           activateModal={this._activateModal}
           closeModal={this._closeModal}
           editModal={this._editModal}
+          titleChanging={this._titleChange}
+          textChanging={this._textChange}
         />
       </div>
     );
@@ -90,6 +92,30 @@ class App extends Component {
       list: this.state.list.map(note => {
         if(note.id === id) {
           note.modal = false
+        }
+
+        return note
+      })
+    })
+  }
+
+  _titleChange = (id) => {
+    this.setState({
+      list: this.state.list.map(note => {
+        if(note.id === id) {
+          note.title.change = true
+        }
+
+        return note
+      })
+    })
+  }
+
+  _textChange = (id) => {
+    this.setState({
+      list: this.state.list.map(note => {
+        if(note.id === id) {
+          note.text.change = true
         }
 
         return note
