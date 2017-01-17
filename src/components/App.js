@@ -11,7 +11,7 @@ class App extends Component {
     super(props)
 
     this.state = {
-      list: [
+      cards: [
         {
           id: uuid.v4(),
           title: {
@@ -36,6 +36,73 @@ class App extends Component {
             change: false
           }
         }
+      ],
+      list: [
+        {
+          id: uuid.v4(),
+          name: 'new list'
+        }
+      ]
+    }
+
+    this.state = {
+      lists: [
+        {
+          id: uuid.v4,
+          name: 'new Lane',
+          cards: [
+            {
+              id: uuid.v4(),
+              title: {
+                name: 'Click me to Edit!',
+                change: false
+              },
+              modal: false,
+              text: {
+                name: 'Click me to Edit Also'
+              }
+            },
+            {
+              id: uuid.v4(),
+              title: {
+                name: 'Click me to Edit!',
+                change: false
+              },
+              modal: false,
+              text: {
+                name: 'Click me to Edit Also'
+              }
+            }
+          ]
+        },
+        {
+          id: uuid.v4,
+          name: 'new Lane',
+          cards: [
+            {
+              id: uuid.v4(),
+              title: {
+                name: 'Click me to Edit!',
+                change: false
+              },
+              modal: false,
+              text: {
+                name: 'Click me to Edit Also'
+              }
+            },
+            {
+              id: uuid.v4(),
+              title: {
+                name: 'Click me to Edit!',
+                change: false
+              },
+              modal: false,
+              text: {
+                name: 'Click me to Edit Also'
+              }
+            }
+          ]
+        }
       ]
     }
   }
@@ -43,9 +110,10 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+        {this.props.test}
         <Navbarz />
         <Cards
-          list={this.state.list}
+          cards={this.state.cards}
           addCard={this._addCards}
           activateModal={this._activateModal}
           closeModal={this._closeModal}
@@ -60,7 +128,7 @@ class App extends Component {
 
   _addCards = () => {
     this.setState({
-      list: this.state.list.concat([{
+      cards: this.state.cards.concat([{
       id: uuid.v4(),
         title: {
           name: 'new card',
@@ -75,15 +143,9 @@ class App extends Component {
     })
   }
 
-  _makeNewList = () => {
-    this.setState({
-
-    })
-  }
-
   _activateModal = (id) => {
     this.setState({
-      list: this.state.list.map(note => {
+      cards: this.state.cards.map(note => {
         if(note.id === id) {
           note.modal = true
         }
@@ -95,7 +157,7 @@ class App extends Component {
 
   _closeModal = (id) => {
     this.setState({
-      list: this.state.list.map(note => {
+      cards: this.state.cards.map(note => {
         if(note.id === id) {
           note.modal = false
         }
@@ -107,7 +169,7 @@ class App extends Component {
 
   _titleChange = (id) => {
     this.setState({
-      list: this.state.list.map(note => {
+      cards: this.state.cards.map(note => {
         if(note.id === id) {
           note.title.change = true
         }
@@ -119,7 +181,7 @@ class App extends Component {
 
   _textChange = (id) => {
     this.setState({
-      list: this.state.list.map(note => {
+      cards: this.state.cards.map(note => {
         if(note.id === id) {
           note.text.change = true
         }
@@ -131,7 +193,7 @@ class App extends Component {
 
   _editModalTitle = (id, title) => {
     this.setState({
-      list: this.state.list.map(note => {
+      cards: this.state.cards.map(note => {
         if(note.id === id) {
           note.title.change = false
           note.title.name = title
@@ -144,7 +206,7 @@ class App extends Component {
 
   _editModalText = (id, text) => {
     this.setState({
-      list: this.state.list.map(note => {
+      cards: this.state.cards.map(note => {
         if(note.id === id) {
           note.text.change = false
           note.text.name = text
@@ -157,4 +219,3 @@ class App extends Component {
 }
 
 export default App;
-//TODO - look into materialize

@@ -4,13 +4,13 @@ import Card from './Card'
 import CardModal from './CardModal'
 import '../stylesheets/css/Cards.css'
 
-const Cards = ({list, addCard, activateModal, editModalTitle, closeModal, 
+const Cards = ({cards, addCard, activateModal, editModalTitle, closeModal, 
 titleChanging, textChanging, editModalText}) => (
   <div>
     <Grid>
       <Row>
         <Col xs={4}>
-          <ul>{list.map(({id, title, text, modal}) =>
+          <ul>{cards.map(({id, title, text, modal}) =>
             <li className="cardList" key={id}>
               <Card 
                 title={title.name}
