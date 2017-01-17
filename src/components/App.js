@@ -4,51 +4,16 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import uuid from 'uuid'
 
 import Navbarz from './Navbarz'
-import Cards from './Cards'
+import Lists from './Lists'
 
 class App extends Component {
   constructor(props) {
     super(props)
 
     this.state = {
-      cards: [
-        {
-          id: uuid.v4(),
-          title: {
-            name: 'Click me to Edit!',
-            change: false
-          },
-          modal: false,
-          text: {
-            name: 'Click me to Edit ALSO!',
-            change: false
-          }
-        },
-        {
-          id: uuid.v4(),
-          title: {
-            name: 'Click me to Edit!',
-            change: false
-          },
-          modal: false,
-          text: {
-            name: 'Click me to Edit ALSO!',
-            change: false
-          }
-        }
-      ],
-      list: [
-        {
-          id: uuid.v4(),
-          name: 'new list'
-        }
-      ]
-    }
-
-    this.state = {
       lists: [
         {
-          id: uuid.v4,
+          id: uuid.v4(),
           name: 'new Lane',
           cards: [
             {
@@ -59,7 +24,8 @@ class App extends Component {
               },
               modal: false,
               text: {
-                name: 'Click me to Edit Also'
+                name: 'Click me to Edit Also',
+                change: false
               }
             },
             {
@@ -70,13 +36,14 @@ class App extends Component {
               },
               modal: false,
               text: {
-                name: 'Click me to Edit Also'
+                name: 'Click me to Edit Also',
+                change: false
               }
             }
           ]
         },
         {
-          id: uuid.v4,
+          id: uuid.v4(),
           name: 'new Lane',
           cards: [
             {
@@ -87,7 +54,8 @@ class App extends Component {
               },
               modal: false,
               text: {
-                name: 'Click me to Edit Also'
+                name: 'Click me to Edit Also',
+                change: false
               }
             },
             {
@@ -98,7 +66,8 @@ class App extends Component {
               },
               modal: false,
               text: {
-                name: 'Click me to Edit Also'
+                name: 'Click me to Edit Also',
+                change: false
               }
             }
           ]
@@ -110,11 +79,11 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        {this.props.test}
         <Navbarz />
-        <Cards
-          cards={this.state.cards}
-          addCard={this._addCards}
+        <Lists
+          lists={this.state.lists}
+          addCards={this._addCards}
+          addList={this._addList}
           activateModal={this._activateModal}
           closeModal={this._closeModal}
           editModalTitle={this._editModalTitle}
@@ -126,26 +95,67 @@ class App extends Component {
     );
   }
 
-  _addCards = () => {
+  // add cards broken!!!
+  _addCards = (id) => {
     this.setState({
-      cards: this.state.cards.concat([{
-      id: uuid.v4(),
-        title: {
-          name: 'new card',
-          change: false
-        },
-        modal: false,
-        text: {
-          name: 'new card',
-          change: false
-        }
+      lists: this.state.lists.map(list => {
+        if(list.id === id) {
+          list.cards.concat([{
+            id: uuid.v4(),
+            title: {
+              name: 'Click me to Edit!',
+              change: false
+            },
+            modal: false,
+            text: {
+              name: 'Click me to Edit Also',
+              change: false
+            }
+          },
+          {
+            id: uuid.v4(),
+            title: {
+              name: 'Click me to Edit!',
+              change: false
+            },
+            modal: false,
+            text: {
+              name: 'Click me to Edit Also',
+              change: false
+            }
+          }])
+        } 
+
+      })
+    })
+  }
+
+  _addList = () => {
+    this.setState({
+      lists: this.state.lists.concat([{
+        id: uuid.v4(),
+        name: 'new Lane',
+        cards: [
+          {
+            id: uuid.v4(),
+            title: {
+              name: 'Click me to Edit!',
+              change: false
+            },
+            modal: false,
+            text: {
+              name: 'Click me to Edit Also',
+              change: false
+            }
+          }
+        ]
       }])
     })
   }
 
   _activateModal = (id) => {
     this.setState({
-      cards: this.state.cards.map(note => {
+      lists: this.state.lists.map(note => {
         if(note.id === id) {
           note.modal = true
         }
@@ -157,7 +167,7 @@ class App extends Component {
 
   _closeModal = (id) => {
     this.setState({
-      cards: this.state.cards.map(note => {
+      lists: this.state.lists.map(note => {
         if(note.id === id) {
           note.modal = false
         }
@@ -169,7 +179,7 @@ class App extends Component {
 
   _titleChange = (id) => {
     this.setState({
-      cards: this.state.cards.map(note => {
+      lists: this.state.lists.map(note => {
         if(note.id === id) {
           note.title.change = true
         }
@@ -181,7 +191,7 @@ class App extends Component {
 
   _textChange = (id) => {
     this.setState({
-      cards: this.state.cards.map(note => {
+      lists: this.state.lists.map(note => {
         if(note.id === id) {
           note.text.change = true
         }
@@ -193,7 +203,7 @@ class App extends Component {
 
   _editModalTitle = (id, title) => {
     this.setState({
-      cards: this.state.cards.map(note => {
+      lists: this.state.lists.map(note => {
         if(note.id === id) {
           note.title.change = false
           note.title.name = title
@@ -206,7 +216,7 @@ class App extends Component {
 
   _editModalText = (id, text) => {
     this.setState({
-      cards: this.state.cards.map(note => {
+      lists: this.state.lists.map(note => {
         if(note.id === id) {
           note.text.change = false
           note.text.name = text
