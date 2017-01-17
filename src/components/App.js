@@ -125,7 +125,8 @@ class App extends Component {
             }
           }])
         } 
-
+        
+        
       })
     })
   }
@@ -155,74 +156,85 @@ class App extends Component {
 
   _activateModal = (id) => {
     this.setState({
-      lists: this.state.lists.map(note => {
-        if(note.id === id) {
-          note.modal = true
-        }
+      lists: this.state.lists.map(list => {
+        list.cards.map(cards => {
+          if(cards.id === id) {
+            cards.modal = true
+          }
 
-        return note
+          return cards
+        })
       })
     })
   }
 
   _closeModal = (id) => {
     this.setState({
-      lists: this.state.lists.map(note => {
-        if(note.id === id) {
-          note.modal = false
-        }
+      lists: this.state.lists.map(list => {
+        list.cards.map(cards => {
+          if(cards.id === id) {
+            cards.modal = false
+          }
 
-        return note
+          return cards
+        })
       })
     })
   }
 
   _titleChange = (id) => {
     this.setState({
-      lists: this.state.lists.map(note => {
-        if(note.id === id) {
-          note.title.change = true
-        }
+      lists: this.state.lists.map(list => {
+        list.cards.map(cards => {
+          if(cards.id === id) {
+            cards.title.change = true
+          }
 
-        return note
+          return cards
+        })
       })
     })
   }
 
   _textChange = (id) => {
     this.setState({
-      lists: this.state.lists.map(note => {
-        if(note.id === id) {
-          note.text.change = true
-        }
+      lists: this.state.lists.map(list => {
+        list.cards.map(cards => {
+          if(cards.id === id) {
+            cards.text.change = true
+          }
 
-        return note
+          return cards
+        })
       })
     })
   }
 
   _editModalTitle = (id, title) => {
     this.setState({
-      lists: this.state.lists.map(note => {
-        if(note.id === id) {
-          note.title.change = false
-          note.title.name = title
-        }
+      lists: this.state.lists.map(list => {
+        list.cards.map(cards => {
+          if(cards.id === id) {
+            cards.title.name = title
+          }
 
-        return note
+          return cards
+        })
       })
     })
   }
 
   _editModalText = (id, text) => {
     this.setState({
-      lists: this.state.lists.map(note => {
-        if(note.id === id) {
-          note.text.change = false
-          note.text.name = text
-        }
+      lists: this.state.lists.map(list => {
+        list.cards.map(cards => {
+          if(cards.id === id) {
+            cards.text.change = false
+            cards.text.name = text
+          }
 
-        return note
+          return cards
+        })
       })
     })
   }
