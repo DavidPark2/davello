@@ -7,8 +7,8 @@ editModalText, editModalTitle, titleChanging,
 textChanging, addCards}) => (
 	<div>
 		<Grid>
-			<Row>{lists.map(({id, name, cards}) =>
-				<Col xs={4} key={id}>
+			<Row>{lists.map(({listid, name, cards}) =>
+				<Col xs={4} key={listid}>
 					<h1>{name}</h1>
 					<Cards 
 						cards={cards}
@@ -18,11 +18,11 @@ textChanging, addCards}) => (
 						editModalTitle={editModalTitle}
 						titleChanging={titleChanging}
 						textChanging={textChanging}
-						addCards={addCards.bind(null, id)}
+						addCards={addCards.bind(null, listid)}
 					/>
 				</Col>
 			)}
-			<Button onClick={addList} bsStyle="danger">sup</Button>
+			<Button onClick={addList} bsStyle="danger">Add List</Button>
 			</Row>
 		</Grid>
 	</div>

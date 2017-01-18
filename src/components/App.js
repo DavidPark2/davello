@@ -13,13 +13,13 @@ class App extends Component {
     this.state = {
       lists: [
         {
-          id: uuid.v4(),
+          listid: uuid.v4(),
           name: 'new Lane',
           cards: [
             {
               id: uuid.v4(),
               title: {
-                name: 'Click me to Edit!',
+                name: 'Click me to Edit!1',
                 change: false
               },
               modal: false,
@@ -31,7 +31,7 @@ class App extends Component {
             {
               id: uuid.v4(),
               title: {
-                name: 'Click me to Edit!',
+                name: 'Click me to Edit2!',
                 change: false
               },
               modal: false,
@@ -43,13 +43,13 @@ class App extends Component {
           ]
         },
         {
-          id: uuid.v4(),
+          listid: uuid.v4(),
           name: 'new Lane',
           cards: [
             {
               id: uuid.v4(),
               title: {
-                name: 'Click me to Edit!',
+                name: 'Click me to Edit!3',
                 change: false
               },
               modal: false,
@@ -61,7 +61,7 @@ class App extends Component {
             {
               id: uuid.v4(),
               title: {
-                name: 'Click me to Edit!',
+                name: 'Click me to Edit!4',
                 change: false
               },
               modal: false,
@@ -96,45 +96,10 @@ class App extends Component {
   }
 
   // add cards broken!!!
-  _addCards = (id) => {
-    this.setState({
-      lists: this.state.lists.map(list => {
-        if(list.id === id) {
-          list.cards.concat([{
-            id: uuid.v4(),
-            title: {
-              name: 'Click me to Edit!',
-              change: false
-            },
-            modal: false,
-            text: {
-              name: 'Click me to Edit Also',
-              change: false
-            }
-          },
-          {
-            id: uuid.v4(),
-            title: {
-              name: 'Click me to Edit!',
-              change: false
-            },
-            modal: false,
-            text: {
-              name: 'Click me to Edit Also',
-              change: false
-            }
-          }])
-        } 
-        
-        
-      })
-    })
-  }
-
   _addList = () => {
     this.setState({
       lists: this.state.lists.concat([{
-        id: uuid.v4(),
+        listid: uuid.v4(),
         name: 'new Lane',
         cards: [
           {
@@ -154,16 +119,41 @@ class App extends Component {
     })
   }
 
+  _addCards = (listid) => {
+    this.setState({
+      lists: this.state.lists.map(list => {
+        if(list.listid === listid) {
+          list.cards.push({
+            id: uuid.v4(),
+            title: {
+              name: 'Click me to Edit!',
+              change: false
+            },
+            modal: false,
+            text: {
+              name: 'Click me to Edit Also',
+              change: false
+            }
+          })
+        }
+
+        return list 
+      })
+    })
+  }
+
   _activateModal = (id) => {
     this.setState({
       lists: this.state.lists.map(list => {
-        list.cards.map(cards => {
-          if(cards.id === id) {
-            cards.modal = true
+        list.cards.map(card => {
+          if(card.id === id) {
+            card.modal = true
           }
 
-          return cards
+          return card
         })
+
+        return list
       })
     })
   }
@@ -171,13 +161,15 @@ class App extends Component {
   _closeModal = (id) => {
     this.setState({
       lists: this.state.lists.map(list => {
-        list.cards.map(cards => {
-          if(cards.id === id) {
-            cards.modal = false
+        list.cards.map(card => {
+          if(card.id === id) {
+            card.modal = false
           }
 
-          return cards
+          return card
         })
+
+        return list
       })
     })
   }
@@ -185,13 +177,15 @@ class App extends Component {
   _titleChange = (id) => {
     this.setState({
       lists: this.state.lists.map(list => {
-        list.cards.map(cards => {
-          if(cards.id === id) {
-            cards.title.change = true
+        list.cards.map(card => {
+          if(card.id === id) {
+            card.title.change = true
           }
 
-          return cards
+          return card
         })
+
+        return list
       })
     })
   }
@@ -199,13 +193,15 @@ class App extends Component {
   _textChange = (id) => {
     this.setState({
       lists: this.state.lists.map(list => {
-        list.cards.map(cards => {
-          if(cards.id === id) {
-            cards.text.change = true
+        list.cards.map(card => {
+          if(card.id === id) {
+            card.text.change = true
           }
 
-          return cards
+          return card
         })
+
+        return list
       })
     })
   }
@@ -213,13 +209,16 @@ class App extends Component {
   _editModalTitle = (id, title) => {
     this.setState({
       lists: this.state.lists.map(list => {
-        list.cards.map(cards => {
-          if(cards.id === id) {
-            cards.title.name = title
+        list.cards.map(card => {
+          if(card.id === id) {
+            card.title.change = false
+            card.title.name = title
           }
 
-          return cards
+          return card
         })
+
+        return list
       })
     })
   }
@@ -227,14 +226,16 @@ class App extends Component {
   _editModalText = (id, text) => {
     this.setState({
       lists: this.state.lists.map(list => {
-        list.cards.map(cards => {
-          if(cards.id === id) {
-            cards.text.change = false
-            cards.text.name = text
+        list.cards.map(card => {
+          if(card.id === id) {
+            card.text.change = false
+            card.text.name = text
           }
 
-          return cards
+          return card
         })
+
+        return list
       })
     })
   }
