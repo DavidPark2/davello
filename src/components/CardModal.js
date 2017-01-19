@@ -1,6 +1,5 @@
 import React, { PropTypes } from 'react'
 import { Button, Modal } from 'react-bootstrap';
-import ModalTitle from './ModalTitle'
 import ModalText from './ModalText'
 
 const CardModal = ({modal, closeModal, text, title, editModalTitle, 
@@ -9,7 +8,7 @@ textChange, titleChange, titleChanging, textChanging, editModalText}) => (
 		<Modal show={modal}>
 	    <Modal.Header>
 	      <Modal.Title onClick={titleChanging}>
-					<ModalTitle 
+					<ModalText
 						titleChange={titleChange}
 						// boolean
 						title={title}
@@ -20,12 +19,12 @@ textChange, titleChange, titleChanging, textChanging, editModalText}) => (
 	    </Modal.Header>
 
 	    <Modal.Body onClick={textChanging}>
-	      <ModalText 
-					textChange={textChange}
+	      <ModalText
+          titleChange={textChange}
 					// boolean
-					text={text}
+          title={text}
 					// string(text)
-					editModalText={editModalText}
+          editModalTitle={editModalText}
 	      />
 	    </Modal.Body>
 

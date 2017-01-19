@@ -1,21 +1,21 @@
-import React, { PropTypes } from 'react'
-import ModalTextEdit from './ModalTextEdit'
+import React, {PropTypes} from 'react'
+import ModalTitleEdit from './ModalTextEdit'
 
-const ModalText = ({textChange, text, editModalText}) => {
-	if(textChange) {
-		return <ModalTextEdit
-			text={text}
-			editModalText={editModalText}
+const ModalTitle = ({titleChange, title, editModalTitle}) => {
+	if(titleChange) {
+		return <ModalTitleEdit 
+			editModalTitle={editModalTitle}
+			title={title}
 		/>
 	}
 
-	return <span>{text}</span>
+	return <span>{title}</span>
 }
 
-ModalText.propTypes = {
-  textChange: PropTypes.bool.isRequired,
-  text: PropTypes.string.isRequired,
-  editModalText: PropTypes.func.isRequired
+ModalTitle.propTypes = {
+  titleChange: PropTypes.bool.isRequired,
+  title: PropTypes.string.isRequired,
+  editModalTitle: PropTypes.func.isRequired
 }
 
-export default ModalText
+export default ModalTitle

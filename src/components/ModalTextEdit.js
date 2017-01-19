@@ -1,13 +1,14 @@
 import React, {PropTypes} from 'react'
 
-class ModalTextEdit extends React.Component {
+class ModalTitleEdit extends React.Component {
 	render() {
-		const {text, editModalText} = this.props
+		const {editModalTitle, title} = this.props
 
 		return (
-			<textarea 
+			<input 
+				type='text'
 				autoFocus={true}
-				defaultValue={text}
+				defaultValue={title}
 				onBlur={this.finishEdit}
 				onKeyPress={this.checkEnter}
 			/>
@@ -23,15 +24,15 @@ class ModalTextEdit extends React.Component {
 	finishEdit = (e) => {
 		const value = e.target.value
 
-		if(this.props.editModalText) {
-			this.props.editModalText(value)
+		if(this.props.editModalTitle) {
+			this.props.editModalTitle(value)
 		}
 	}
 }
 
-ModalTextEdit.propTypes = {
-	text: PropTypes.string.isRequired,
-  editModalText: PropTypes.func.isRequired
+ModalTitleEdit.propTypes = {
+  title: PropTypes.string.isRequired,
+  editModalTitle: PropTypes.func.isRequired
 }
 
-export default ModalTextEdit
+export default ModalTitleEdit
