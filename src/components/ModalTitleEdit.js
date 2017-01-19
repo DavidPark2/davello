@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {PropTypes} from 'react'
 
 class ModalTitleEdit extends React.Component {
 	render() {
@@ -28,6 +28,11 @@ class ModalTitleEdit extends React.Component {
 			this.props.editModalTitle(value)
 		}
 	}
+}
+
+ModalTitleEdit.propTypes = {
+  title: PropTypes.string.isRequired,
+  editModalTitle: PropTypes.func.isRequired
 }
 
 export default ModalTitleEdit

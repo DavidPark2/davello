@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { PropTypes } from 'react'
 import { Button, Modal } from 'react-bootstrap';
 import ModalTitle from './ModalTitle'
 import ModalText from './ModalText'
@@ -36,5 +36,18 @@ textChange, titleChange, titleChanging, textChanging, editModalText}) => (
     </Modal>
 	</div>
 )
+
+CardModal.propTypes = {
+	modal: PropTypes.bool.isRequired,
+	closeModal: PropTypes.func.isRequired,
+	text: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  editModalTitle: PropTypes.func.isRequired,
+  textChange: PropTypes.bool.isRequired,
+  titleChange: PropTypes.bool.isRequired,
+  titleChanging: PropTypes.func.isRequired,
+  textChanging: PropTypes.func.isRequired,
+  editModalText: PropTypes.func.isRequired
+}
 
 export default CardModal

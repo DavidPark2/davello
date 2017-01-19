@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {PropTypes} from 'react'
 
 class ModalTextEdit extends React.Component {
 	render() {
@@ -27,6 +27,11 @@ class ModalTextEdit extends React.Component {
 			this.props.editModalText(value)
 		}
 	}
+}
+
+ModalTextEdit.propTypes = {
+	text: PropTypes.string.isRequired,
+  editModalText: PropTypes.func.isRequired
 }
 
 export default ModalTextEdit

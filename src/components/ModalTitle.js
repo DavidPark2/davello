@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {PropTypes} from 'react'
 import ModalTitleEdit from './ModalTitleEdit'
 
 const ModalTitle = ({titleChange, title, editModalTitle}) => {
@@ -12,6 +12,10 @@ const ModalTitle = ({titleChange, title, editModalTitle}) => {
 	return <span>{title}</span>
 }
 
-
+ModalTitle.propTypes = {
+  titleChange: PropTypes.bool.isRequired,
+  title: PropTypes.string.isRequired,
+  editModalTitle: PropTypes.func.isRequired
+}
 
 export default ModalTitle
