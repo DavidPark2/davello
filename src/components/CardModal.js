@@ -9,22 +9,22 @@ textChange, titleChange, titleChanging, textChanging, editModalText}) => (
 	    <Modal.Header>
 	      <Modal.Title onClick={titleChanging}>
 					<ModalText
-						titleChange={titleChange}
+						textChange={titleChange}
 						// boolean
-						title={title}
+						text={title}
 						// string(title)
-						editModalTitle={editModalTitle}
+						editModalText={editModalTitle}
 					/>
 	      </Modal.Title>
 	    </Modal.Header>
 
 	    <Modal.Body onClick={textChanging}>
 	      <ModalText
-          titleChange={textChange}
+          textChange={textChange}
 					// boolean
-          title={text}
+          text={text}
 					// string(text)
-          editModalTitle={editModalText}
+          editModalText={editModalText}
 	      />
 	    </Modal.Body>
 
@@ -41,7 +41,6 @@ CardModal.propTypes = {
 	closeModal: PropTypes.func.isRequired,
 	text: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
-  editModalTitle: PropTypes.func.isRequired,
   textChange: PropTypes.bool.isRequired,
   titleChange: PropTypes.bool.isRequired,
   titleChanging: PropTypes.func.isRequired,
