@@ -14,7 +14,10 @@ class App extends Component {
       lists: [
         {
           listid: uuid.v4(),
-          name: 'new Lane',
+          listTitle: {
+            name: 'new Lane',
+            change: false
+          },
           cards: [
             {
               id: uuid.v4(),
@@ -44,7 +47,10 @@ class App extends Component {
         },
         {
           listid: uuid.v4(),
-          name: 'new Lane',
+          listTitle: {
+            name: 'new Lane',
+            change: false
+          },
           cards: [
             {
               id: uuid.v4(),
@@ -90,6 +96,8 @@ class App extends Component {
           titleChanging={this._titleChange}
           textChanging={this._textChange}
           editModalText={this._editModalText}
+          changeListTitle={this._changeListTitle}
+          editListTitle={this._editListTitle}
         />
       </div>
     );
@@ -100,7 +108,10 @@ class App extends Component {
     this.setState({
       lists: this.state.lists.concat([{
         listid: uuid.v4(),
-        name: 'new Lane',
+        listTitle: {
+          name: 'new Lane',
+          change: false
+        },
         cards: [
           {
             id: uuid.v4(),
@@ -236,6 +247,29 @@ class App extends Component {
         })
 
         return list
+      })
+    })
+  }
+
+  _changeListTitle = (listid) => {
+    this.setState({
+      lists: this.state.lists.map(list => {
+        if(list.listid === listid) {
+          list.listTitle.change = true
+        }
+
+        return list
+      })
+    })
+  }
+
+  _editListTitle = (listid, name) => {
+    this.setState({
+      lists: this.state.lists.map(list => {
+        if(list.listid === listid) {
+          list.listTitle.change = false
+          list.listTitle.name = name
+        }
       })
     })
   }

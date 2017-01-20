@@ -10,9 +10,7 @@ textChange, titleChange, titleChanging, textChanging, editModalText}) => (
 	      <Modal.Title onClick={titleChanging}>
 					<ModalText
 						textChange={titleChange}
-						// boolean
 						text={title}
-						// string(title)
 						editModalText={editModalTitle}
 					/>
 	      </Modal.Title>
@@ -21,9 +19,7 @@ textChange, titleChange, titleChanging, textChanging, editModalText}) => (
 	    <Modal.Body onClick={textChanging}>
 	      <ModalText
           textChange={textChange}
-					// boolean
           text={text}
-					// string(text)
           editModalText={editModalText}
 	      />
 	    </Modal.Body>
