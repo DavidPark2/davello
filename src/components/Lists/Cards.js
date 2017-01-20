@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react'
 import { Button, ListGroup } from 'react-bootstrap'
 import Card from './Card'
 import CardModal from './CardModal'
-import '../stylesheets/css/Cards.css'
+import '../../stylesheets/css/Cards.css'
 
 const Cards = ({cards, addCards, activateModal, editModalTitle, closeModal, 
 titleChanging, textChanging, editModalText}) => (

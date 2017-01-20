@@ -3,8 +3,8 @@ import '../stylesheets/css/App.css';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import uuid from 'uuid'
 
-import Navbarz from './Navbarz'
-import Lists from './Lists'
+import Navbarz from './Navbar/Navbarz'
+import Lists from './Lists/Lists'
 
 class App extends Component {
   constructor(props) {

@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react'
 import { Button, Col, Grid, Row } from 'react-bootstrap'
 import Cards from './Cards'
-import '../stylesheets/css/List.css'
+import '../../stylesheets/css/List.css'
 
 const Lists = ({lists, addList, activateModal, closeModal,
 editModalText, editModalTitle, titleChanging,
