@@ -19,7 +19,10 @@ gulp.task('sass', function() {
   return gulp
     .src(input)
     .pipe(sourcemaps.init())
-      .pipe(sass(sassOptions).on('error', sass.logError))
+      .pipe(sass({
+        outputStyle: 'compressed',
+        includePaths: ['node_modules/susy/sass']
+      }).on('error', sass.logError))
     .pipe(sourcemaps.write())
     .pipe(autoprefixer(autoprefixerOptions))
     .pipe(gulp.dest(output))

@@ -7,19 +7,12 @@ import ModalText from './ModalText'
 const Lists = ({lists, addList, activateModal, closeModal,
 editModalText, editModalTitle, titleChanging,
 textChanging, addCards, changeListTitle, editListTitle}) => (
-  //TODO: fix lane 21!!!!!!!!
 	<div>
 		<Grid>
 			<Row>{lists.map(({listid, listTitle, cards}) =>
 				<Col xs={4} key={listid} className="backgroundColor">
 					<div className="listCenter" onClick={changeListTitle.bind(null, listid)}>
-            {/*{listTitle.name}*/}
-
-            <ModalText
-              textChange={listTitle.change}
-              text={listTitle.name}
-              editModalText={editListTitle.bind(null, listid)}
-            />
+            {listTitle.name}
           </div>
 					<Cards 
 						cards={cards}
@@ -38,6 +31,7 @@ textChanging, addCards, changeListTitle, editListTitle}) => (
 		</Grid>
 	</div>
 )
+//TODO: Line 14, need to add onClick title change to input
 
 Lists.propTypes = {
 	lists: PropTypes.arrayOf(PropTypes.shape({

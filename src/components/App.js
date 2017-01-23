@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import '../stylesheets/css/App.css';
-import 'bootstrap/dist/css/bootstrap.min.css'
 import uuid from 'uuid'
 
 import Navbarz from './Navbar/Navbarz'
@@ -88,23 +87,23 @@ class App extends Component {
         <Navbarz />
         <Lists
           lists={this.state.lists}
-          addCards={this._addCards}
-          addList={this._addList}
-          activateModal={this._activateModal}
-          closeModal={this._closeModal}
-          editModalTitle={this._editModalTitle}
-          titleChanging={this._titleChange}
-          textChanging={this._textChange}
-          editModalText={this._editModalText}
-          changeListTitle={this._changeListTitle}
-          editListTitle={this._editListTitle}
+          addCards={this.addCards}
+          addList={this.addList}
+          activateModal={this.activateModal}
+          closeModal={this.closeModal}
+          editModalTitle={this.editModalTitle}
+          titleChanging={this.titleChange}
+          textChanging={this.textChange}
+          editModalText={this.editModalText}
+          changeListTitle={this.changeListTitle}
+          editListTitle={this.editListTitle}
         />
       </div>
     );
   }
 
   // add cards broken!!!
-  _addList = () => {
+  addList = () => {
     this.setState({
       lists: this.state.lists.concat([{
         listid: uuid.v4(),
@@ -130,7 +129,7 @@ class App extends Component {
     })
   }
 
-  _addCards = (listid) => {
+  addCards = (listid) => {
     this.setState({
       lists: this.state.lists.map(list => {
         if(list.listid === listid) {
@@ -153,7 +152,7 @@ class App extends Component {
     })
   }
 
-  _activateModal = (id) => {
+  activateModal = (id) => {
     this.setState({
       lists: this.state.lists.map(list => {
         list.cards.map(card => {
@@ -169,7 +168,7 @@ class App extends Component {
     })
   }
 
-  _closeModal = (id) => {
+  closeModal = (id) => {
     this.setState({
       lists: this.state.lists.map(list => {
         list.cards.map(card => {
@@ -185,7 +184,7 @@ class App extends Component {
     })
   }
 
-  _titleChange = (id) => {
+  titleChange = (id) => {
     this.setState({
       lists: this.state.lists.map(list => {
         list.cards.map(card => {
@@ -201,7 +200,7 @@ class App extends Component {
     })
   }
 
-  _textChange = (id) => {
+  textChange = (id) => {
     this.setState({
       lists: this.state.lists.map(list => {
         list.cards.map(card => {
@@ -217,7 +216,7 @@ class App extends Component {
     })
   }
 
-  _editModalTitle = (id, title) => {
+  editModalTitle = (id, title) => {
     this.setState({
       lists: this.state.lists.map(list => {
         list.cards.map(card => {
@@ -234,7 +233,7 @@ class App extends Component {
     })
   }
 
-  _editModalText = (id, text) => {
+  editModalText = (id, text) => {
     this.setState({
       lists: this.state.lists.map(list => {
         list.cards.map(card => {
@@ -251,7 +250,7 @@ class App extends Component {
     })
   }
 
-  _changeListTitle = (listid) => {
+  changeListTitle = (listid) => {
     this.setState({
       lists: this.state.lists.map(list => {
         if(list.listid === listid) {
@@ -263,7 +262,7 @@ class App extends Component {
     })
   }
 
-  _editListTitle = (listid, name) => {
+  editListTitle = (listid, name) => {
     this.setState({
       lists: this.state.lists.map(list => {
         if(list.listid === listid) {
