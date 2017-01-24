@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import '../stylesheets/css/App.css';
 import uuid from 'uuid'
 
-import Navbarz from './Navbar/Navbarz'
+import NavBarzHideDropDown from '../container/NavbarzHideDropDown'
 import Lists from './Lists/Lists'
 
 class App extends Component {
@@ -10,6 +10,7 @@ class App extends Component {
     super(props)
 
     this.state = {
+      navbar: false,
       lists: [
         {
           listid: uuid.v4(),
@@ -84,7 +85,11 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Navbarz />
+        <NavBarzHideDropDown
+          navDropDown={this.state.navbar}
+          mouseOver={this.mouseOver}
+          mouseOut={this.mouseOut}
+        />
         <Lists
           lists={this.state.lists}
           addCards={this.addCards}
@@ -269,7 +274,21 @@ class App extends Component {
           list.listTitle.change = false
           list.listTitle.name = name
         }
+
+        return list
       })
+    })
+  }
+
+  mouseOver = () => {
+    this.setState({
+      navbar: true
+    })
+  }
+
+  mouseOut = () => {
+    this.setState({
+      navbar: false
     })
   }
 }
