@@ -10,7 +10,7 @@ const Navbarz = ({mouseOver, mouseOut, navDownDrop}) => (
       <li><a href="#!">Home</a></li>
       <li><a href="#!">About</a></li>
       <li><a href="#!" onMouseOver={mouseOver} onMouseOut={mouseOut}>Services</a>
-        <ul className={navDownDrop}>
+        <ul className={navDownDrop} onMouseOver={mouseOver} onMouseOut={mouseOut}>
           <li><a href="#!">Web Design</a></li>
           <li><a href="#!">Web Development</a></li>
           <li><a href="#!">Graphic Design</a></li>
@@ -23,7 +23,9 @@ const Navbarz = ({mouseOver, mouseOut, navDownDrop}) => (
 )
 
 Navbarz.propTypes = {
-
+  mouseOver: PropTypes.func.isRequired,
+  mouseOut: PropTypes.func.isRequired,
+  navDownDrop: PropTypes.string.isRequired
 }
 
 export default Navbarz
