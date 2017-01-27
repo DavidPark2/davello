@@ -1,18 +1,29 @@
 import React, {PropTypes} from 'react'
 import Navbarz from '../components/Navbar/Navbarz'
 
-const NavBarzHideDropDown = ({navDropDown, mouseOver, mouseOut}) => {
-  if (navDropDown) {
+const NavBarzHideDropDown = ({navDropDown, navMouseOver, navMouseOut, mobileNavBar,
+mobileNavBarShow, mobileNavBarHide}) => {
+  if (navDropDown && mobileNavBar) {
     return <Navbarz
-      mouseOver={mouseOver}
-      mouseOut={mouseOut}
+      navMouseOver={navMouseOver}
+      navMouseOut={navMouseOut}
+      navDownDrop='nav-dropdown-show'
+      mobileNavBarShow={mobileNavBarShow}
+      mobileNavBarHide={mobileNavBarHide}
+    />
+  } else if ((navDropDown === true) && (mobileNavBar === false)) {
+    return <Navbarz
+      navMouseOver={navMouseOver}
+      navMouseOut={navMouseOut}
       navDownDrop='nav-dropdown-show'
     />
+  } else if ((navDropDown === false) && (mobileNavBar === true)) {
+
   }
 
   return <Navbarz
-    mouseOut={mouseOut}
-    mouseOver={mouseOver}
+    navMouseOut={navMouseOut}
+    navMouseOver={navMouseOver}
     navDownDrop='nav-dropdown-hide'
   />
 }

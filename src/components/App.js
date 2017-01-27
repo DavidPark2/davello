@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import '../stylesheets/css/App.css';
+import 'bootstrap/dist/css/bootstrap.min.css'
 import uuid from 'uuid'
 
 import NavBarzHideDropDown from '../container/NavbarzHideDropDown'
@@ -11,6 +12,7 @@ class App extends Component {
 
     this.state = {
       navbar: false,
+      mobileNavBar: false,
       lists: [
         {
           listid: uuid.v4(),
@@ -87,8 +89,12 @@ class App extends Component {
       <div className="App">
         <NavBarzHideDropDown
           navDropDown={this.state.navbar}
-          mouseOver={this.mouseOver}
-          mouseOut={this.mouseOut}
+          navMouseOver={this.navMouseOver}
+          navMouseOut={this.navMouseOut}
+          mobileNavBar={this.state.mobileNavBar}
+          mobileNavBarShow={this.mobileNavBarShow}
+          mobileNavBarHide={this.mobileNavBarHide}
+
         />
         <Lists
           lists={this.state.lists}
@@ -280,17 +286,31 @@ class App extends Component {
     })
   }
 
-  mouseOver = () => {
+  navMouseOver = () => {
     this.setState({
       navbar: true
     })
   }
 
-  mouseOut = () => {
+  navMouseOut = () => {
     this.setState({
       navbar: false
     })
   }
+
+  mobileNavBarShow = () => {
+    this.setState({
+      mobileNavBar: true
+    })
+  }
+
+
+  mobileNavBarHide = () => {
+    this.setState({
+      mobileNavBarShow: false
+    })
+  }
+
 }
 
 export default App;
